@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\SkripsiController;
 use App\Http\Controllers\MahasiswaController;
 
 /*
@@ -15,8 +17,10 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
+Route::get('/welcome', [HomeController::class, 'welcome'])->name('welcome');
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/welcome');
 });
 
 Auth::routes();
@@ -36,6 +40,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('is_admin')->group(function () {
     // Route Kelola Dosen -------------------------------------------------------------------------
+    Route::get('/admin/dosen', [DosenController::class, 'index'])->name('dosen');
+    Route::post('/admin/dosen', [DosenController::class, 'tambah'])->name('tambah.dosen');
+    Route::patch('/admin/dosen/ubah', [DosenController::class, 'ubah'])->name('ubah.dosen');
+    Route::get('admin/ajaxadmin/dataDosen/{id}', [DosenController::class, 'getDataDosen']);
+    Route::get('/admin/dosen/hapus/{id}', [DosenController::class, 'hapus'])->name('hapus.dosen');
 
     // Route Kelola Mahasiswa ---------------------------------------------------------------------
     Route::get('/admin/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
@@ -45,5 +54,12 @@ Route::middleware('is_admin')->group(function () {
     Route::get('/admin/mahasiswa/hapus/{id}', [MahasiswaController::class,'hapus'])->name('hapus.mahasiswa');
 
     // Route Skripsi ------------------------------------------------------------------------------
-
+    Route::get('/admin/skripsi', [SkripsiController::class, 'index'])->name('skripsi');
+    Route::post('/admin/skripsi', [SkripsiController::class, 'tambah'])->name('tambah.skripsi');
+    Route::patch('/admin/skripsi/ubah', [SkripsiController::class, 'ubah'])->name('ubah.skripsi');
+    Route::get('admin/ajaxadmin/dataSkripsi/{id}', [SkripsiController::class, 'getDataSkripsi']);
+    Route::get('/admin/skripsi/hapus/{id}', [SkripsiController::class, 'hapus'])->name('hapus.skripsi');
 });
+
+// View File PDF -----------------------------------------------------------------------------------
+Route::get('/pdf/{id}', [SkripsiController::class, 'showPdf'])->name('pdf.show');

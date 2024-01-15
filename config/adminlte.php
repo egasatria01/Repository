@@ -296,22 +296,37 @@ return [
             'url'  => 'home',
             'icon' => 'fas fa-fw fa-home',
         ],
-        ['header' => 'KELOLA DATA LAPORAN'],
+        [
+            'header' => 'KELOLA DATA LAPORAN',
+            'can'    => 'isAdmin',
+        ],
         [
             'text' => 'Data Skripsi',
             'url'  => 'admin/skripsi',
             'icon' => 'fas fa-fw fa-book',
+            'can'  => 'isAdmin',
         ],
-        ['header' => 'KELOLA DATA PENGGUNA'],
+        [
+            'text' => 'Data Skripsi',
+            'url'  => 'home/skripsi',
+            'icon' => 'fas fa-fw fa-book',
+            'can'  => 'isGuru',
+        ],
+        [
+            'header' => 'KELOLA DATA PENGGUNA',
+            'can'    => 'isAdmin',
+        ],
         [
             'text' => 'Data Mahasiswa',
             'url'  => 'admin/mahasiswa',
             'icon' => 'fas fa-fw fa-users',
+            'can'  => 'isAdmin',
         ],
         [
             'text' => 'Data Dosen',
             'url'  => 'admin/dosen',
             'icon' => 'fas fa-fw fa-user',
+            'can'  => 'isAdmin',
         ],
     ],
 
