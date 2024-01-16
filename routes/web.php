@@ -59,7 +59,12 @@ Route::middleware('is_admin')->group(function () {
     Route::patch('/admin/skripsi/ubah', [SkripsiController::class, 'ubah'])->name('ubah.skripsi');
     Route::get('admin/ajaxadmin/dataSkripsi/{id}', [SkripsiController::class, 'getDataSkripsi']);
     Route::get('/admin/skripsi/hapus/{id}', [SkripsiController::class, 'hapus'])->name('hapus.skripsi');
+
 });
+
+Route::get('/home/skripsi/detail/{id}', [SkripsiController::class, 'detailskripsi']);
+Route::get('/welcome/detail/{id}', [SkripsiController::class, 'welcomeskripsi']);
+Route::get('/home/skripsi', [SkripsiController::class, 'mahasiswa'])->name('mahasiswa.skripsi');
 
 // View File PDF -----------------------------------------------------------------------------------
 Route::get('/pdf/{id}', [SkripsiController::class, 'showPdf'])->name('pdf.show');

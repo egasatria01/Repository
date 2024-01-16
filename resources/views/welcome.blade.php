@@ -119,6 +119,7 @@
                                         <th>Keterangan</th>
                                         <th>Rilis</th>
                                         <th>Halaman</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,10 +129,17 @@
                                         <td>{{$no++}}</td>
                                         <td>{{$skripsis->judul}}</td>
                                         <td>{{$skripsis->penulis}}</td>
-                                        <td>{{$skripsis->abstrak}}</td>
+                                        <td>{{ Str::limit($skripsis->abstrak, 20) }}</td>
                                         <td>{{$skripsis->keterangan}}</td>
                                         <td>{{$skripsis->rilis}}</td>
                                         <td>{{$skripsis->halaman}}</td>
+                                        <td>
+                                            <a href="/welcome/detail/{{$skripsis->id}}">
+                                                <button class="btn btn-sm btn-primary">
+                                                    Detail
+                                                </button>
+                                            </a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

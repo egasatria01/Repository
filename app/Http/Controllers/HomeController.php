@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Dosen;
 use App\Models\Skripsi;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +25,11 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home', compact('user'));
+        $jumlahDosen = Dosen::count();
+        $jumlahMahasiswa = User::count();
+        $jumlahSkripsi = Skripsi::count();
+
+        return view('home', compact('user', 'jumlahDosen', 'jumlahMahasiswa', 'jumlahSkripsi'));
     }
     public function welcome(Request $req){
 

@@ -44,7 +44,7 @@
                         <td>{{$no++}}</td>
                         <td>{{$skripsis->judul}}</td>
                         <td>{{$skripsis->penulis}}</td>
-                        <td>{{$skripsis->abstrak}}</td>
+                        <td>{{ Str::limit($skripsis->abstrak, 20) }}</td>
                         <td>{{$skripsis->keterangan}}</td>
                         <td>{{$skripsis->rilis}}</td>
                         <td>{{$skripsis->halaman}}</td>

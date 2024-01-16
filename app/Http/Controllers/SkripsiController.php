@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skripsi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SkripsiController extends Controller
@@ -12,6 +13,11 @@ class SkripsiController extends Controller
     public function index() {
         $skripsi = Skripsi::All();
         return view('skripsi', compact('skripsi'));
+    }
+
+    public function mahasiswa() {
+        $skripsi = Skripsi::All();
+        return view('skripsi2', compact('skripsi'));
     }
 
     // Landing Page -----------------------------------------------------------------------------------------------------
@@ -75,6 +81,20 @@ class SkripsiController extends Controller
     public function getDataSkripsi($id){
         $skripsi = Skripsi::find($id);
         return response()->json($skripsi);
+    }
+
+    // Get Data Skripsi ----------------------------------------------------------------------------------------------
+    public function detailskripsi($id){
+        $user = Auth::user();
+        $skripsi = Skripsi::find($id);
+        return view('detail', compact('skripsi', 'user'));
+    }
+
+    // Get Data Skripsi ----------------------------------------------------------------------------------------------
+    public function welcomeskripsi($id){
+        $user = Auth::user();
+        $skripsi = Skripsi::find($id);
+        return view('welcomeskripsi', compact('skripsi', 'user'));
     }
 
     // Ubah Data Skripsi ----------------------------------------------------------------------------------------------
