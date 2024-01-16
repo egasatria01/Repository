@@ -31,12 +31,7 @@ Route::get('/home', function() {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-// Route Mahasiswa --------------------------------------------------------------------------------
-Route::middleware('auth')->group(function () {
-
-});
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::middleware('is_admin')->group(function () {
     // Route Kelola Dosen -------------------------------------------------------------------------
