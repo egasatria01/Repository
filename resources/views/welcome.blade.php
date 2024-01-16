@@ -50,7 +50,7 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+                <img class="masthead-avatar mb-5" src="vendor/adminlte/dist/img/unsur.png" alt="..." />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">E-Repository</h1>
                 <!-- Icon Divider-->
@@ -156,14 +156,13 @@
                 </div>
                 <!-- About Section Content-->
                 <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                    <div class="col-lg-12 me-auto"><p class="lead">Faster Unsur adalah Fakultas Sains Terapan di Universitas Suryakancana, Cianjur. Fakultas ini berada di Jalan Pasir Gede Raya, Cianjur.Menjadi Institusi yang Unggul di Tingkat ASEAN, Dalam Penyelenggaraan Pendidikan dan Penelitian untuk Kesejahteraan Masyarakat pada Tahun 2030</p></div>
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
+                    <a class="btn btn-xl btn-outline-light" href="https://faster.unsur.ac.id/">
+                        
+                        Informasi Lanjut
                     </a>
                 </div>
             </div>
@@ -222,9 +221,6 @@
                             <div class="d-none" id="submitSuccessMessage">
                                 <div class="text-center mb-3">
                                     <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                 </div>
                             </div>
                             <!-- Submit error message-->
@@ -262,11 +258,9 @@
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                        <h4 class="text-uppercase mb-4">About Faster</h4>
                         <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
+                            Universitas Suryakancana - Fakultas - Sains Terapan
                         </p>
                     </div>
                 </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Imports\MahasiswaImport;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
 {
@@ -78,5 +80,17 @@ class MahasiswaController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
+    }
+
+    // Import Mahasiswa --------------------------------------------------------------------------------------------------
+    public function import(Request $req){
+        Excel::import(new MahasiswaImport, $req->file('file'));
+
+        $notification = array (
+            'message' => 'Import data berhasil dilakukan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('mahasiswa')->with($notification);
     }
 }

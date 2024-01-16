@@ -19,8 +19,8 @@
                     </button>
                 </div>
                 <div class="tombol">
-                    <button type="button" class="btn btn-info" >
-                        Export
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#import">
+                        Import Data Mahasiswa
                     </button>
                 </div>
             </div>
@@ -197,6 +197,33 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="import" tabindex="-1" aria-labelledby="importLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="importLabel">Import Data Siswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="{{ route('mahasiswa.import') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <label for="file">File</label>
+                        <input type="file"class="form-control p-1" name="file" id="edit-file" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @stop
 
 

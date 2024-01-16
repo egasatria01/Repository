@@ -55,8 +55,11 @@ Route::middleware('is_admin')->group(function () {
     Route::get('admin/ajaxadmin/dataSkripsi/{id}', [SkripsiController::class, 'getDataSkripsi']);
     Route::get('/admin/skripsi/hapus/{id}', [SkripsiController::class, 'hapus'])->name('hapus.skripsi');
 
+    // Route Import -------------------------------------------------------------------------------
+    Route::post('/admin/mahasiswa/import', [MahasiswaController::class,'import'])->name('mahasiswa.import');
 });
 
+// Route Detail Skripsi ---------------------------------------------------------------------------
 Route::get('/home/skripsi/detail/{id}', [SkripsiController::class, 'detailskripsi']);
 Route::get('/welcome/detail/{id}', [SkripsiController::class, 'welcomeskripsi']);
 Route::get('/home/skripsi', [SkripsiController::class, 'mahasiswa'])->name('mahasiswa.skripsi');
