@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('alamat');
             $table->string('angkatan');
             $table->string('prodi');
-            $table->string('jurusan');
+            $table->string('fakultas');
             $table->string('password');
             $table->foreignId('roles_id')->constrained();
             $table->rememberToken();

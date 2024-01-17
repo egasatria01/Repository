@@ -19,8 +19,8 @@
                     </button>
                 </div>
                 <div class="tombol">
-                    <button type="button" class="btn btn-info" >
-                        Export
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#import">
+                        Import Data Dosen
                     </button>
                 </div>
             </div>
@@ -28,14 +28,14 @@
                 <thead>
                     <tr class="text-center">
                         <th>No.</th>
-                        <th>Nama</th>
                         <th>NIP</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
                         <th>Email</th>
-                        <th>Gelar Akademik</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Kontak</th>
                         <th>Prodi</th>
                         <th>Jabatan</th>
-                        <th>Kontak</th>
-                        <th>Alamat</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -44,14 +44,14 @@
                     @foreach($dosen as $dosens)
                     <tr>
                         <td>{{$no++}}</td>
+                        <td>{{ Str::limit($dosens->nip,15)}}</td>
                         <td>{{$dosens->nama}}</td>
-                        <td>{{$dosens->nip}}</td>
-                        <td>{{$dosens->email}}</td>
-                        <td>{{$dosens->gelarAkademik}}</td>
+                        <td>{{ Str::limit($dosens->alamat,20)}}</td>
+                        <td>{{ Str::limit($dosens->email,15)}}</td>
+                        <td>{{$dosens->tanggalLahir}}</td>
+                        <td>{{ Str::limit($dosens->kontak,12)}}</td>
                         <td>{{$dosens->programStudi}}</td>
                         <td>{{$dosens->jabatan}}</td>
-                        <td>{{$dosens->kontak}}</td>
-                        <td>{{$dosens->alamat}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" id="btn-edit-dosen" class="btn btn-success" data-toggle="modal" data-target="#edit" data-id="{{ $dosens->id }}">
@@ -83,34 +83,34 @@
                 <form method="post" action="{{ route('tambah.dosen')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="name" id="name" required>
-                        </div>
                         <div class="d-flex">
                             <div class="form-group col-md-6">
                                 <label for="nip">NIP</label>
                                 <input type="text" class="form-control" name="nip" id="nip" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="tanggalLahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggalLahir" id="tanggalLahir" required>
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" class="form-control" name="name" id="name" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" required>
-                        </div>
-                        <div class="d-flex">
-                            <div class="form-group col-md-6">
-                                <label for="gelarAkademik">Gelar Akademik</label>
-                                <input type="text" class="form-control" name="gelarAkademik" id="gelarAkademik" placeholder="Opsional">
+                            <div class="form-group">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" class="form-control" name="alamat" id="alamat" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="programStudi">Program Studi</label>
-                                <input type="text" class="form-control" name="programStudi" id="programStudi" required>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
                             </div>
-                        </div>
+                            <div class="d-flex">
+                                <div class="form-group col-md-6">
+                                    <label for="tanggalLahir">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tanggalLahir" id="tanggalLahir" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="programStudi">Program Studi</label>
+                                    <input type="text" class="form-control" name="programStudi" id="programStudi" required>
+                                </div>
+                            </div>
                         <div class="d-flex">
                             <div class="form-group col-md-6">
                                 <label for="jabatan">Jabatan</label>
@@ -121,11 +121,6 @@
                                 <input type="text" class="form-control" name="kontak" id="kontak" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" name="alamat" id="alamat" required>
-                        </div>
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Tambah Data</button>
@@ -134,6 +129,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <!-- Modal Edit -->
     <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,20 +145,20 @@
                     @csrf
                     @method ('PATCH')
                     <div class="modal-body">
-                        <input type="text" class="form-control" name="id" id="edit-id" required hidden>
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="name" id="edit-name" required>
-                        </div>
                         <div class="d-flex">
                             <div class="form-group col-md-6">
                                 <label for="nip">NIP</label>
                                 <input type="text" class="form-control" name="nip" id="edit-nip" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="tanggalLahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggalLahir" id="edit-tanggalLahir" required>
-                            </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="id" id="edit-id" required hidden>
+                                    <label for="name">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="name" id="edit-name" required>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" class="form-control" name="alamat" id="edit-alamat" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -170,9 +166,14 @@
                         </div>
                         <div class="d-flex">
                             <div class="form-group col-md-6">
-                                <label for="gelarAkademik">Gelar Akademik</label>
-                                <input type="text" class="form-control" name="gelarAkademik" id="edit-gelarAkademik" required>
+                                <label for="tanggalLahir">Tanggal Lahir</label>
+                                <input type="date" class="form-control" name="tanggalLahir" id="edit-tanggalLahir" required>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="kontak">Kontak</label>
+                                <input type="text" class="form-control" name="kontak" id="edit-kontak" required>
+                            </div>
+                        </div>
                             <div class="form-group col-md-6">
                                 <label for="programStudi">Program Studi</label>
                                 <input type="text" class="form-control" name="programStudi" id="edit-programStudi" required>
@@ -183,19 +184,36 @@
                                 <label for="jabatan">Jabatan</label>
                                 <input type="text" class="form-control" name="jabatan" id="edit-jabatan" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="kontak">Kontak</label>
-                                <input type="text" class="form-control" name="kontak" id="edit-kontak" required>
-                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <input type="text" class="form-control" name="alamat" id="edit-alamat" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Ubah Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="import" tabindex="-1" aria-labelledby="importLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="importLabel">Import Data Dosen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{ route('dosen.import') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group col-md-12">
+                            <label for="file">File</label>
+                            <input type="file"class="form-control p-1" name="file" id="edit-file" required/>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Ubah Data</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -225,7 +243,6 @@
                         $('#edit-nip').val(res.nip);
                         $('#edit-jabatan').val(res.jabatan);
                         $('#edit-tanggalLahir').val(res.tanggalLahir);
-                        $('#edit-gelarAkademik').val(res.gelarAkademik);
                         $('#edit-programStudi').val(res.programStudi);
                     },
                 });

@@ -13,7 +13,7 @@
             <div class="card-body">
                 <table class="table table-borderless">
                     <tr>
-                        <td>Judul Skripsi</td>
+                        <td>Judul</td>
                         <td>:</td>
                         <td>{{$skripsi->judul}}</td>
                     </tr>
@@ -23,24 +23,24 @@
                         <td>{{$skripsi->penulis}}</td>
                     </tr>
                     <tr>
+                        <td>Dosen Pembimbing</td>
+                        <td>:</td>
+                        <td>{{$skripsi->dospem}}</td>
+                    </tr>
+                    <tr>
                         <td>Abstrak</td>
                         <td>:</td>
                         <td>{{$skripsi->abstrak}}</td>
                     </tr>
                     <tr>
-                        <td>Keterangan</td>
+                        <td>Prodi</td>
                         <td>:</td>
-                        <td>{{$skripsi->keterangan}}</td>
+                        <td>{{$skripsi->prodi}}</td>
                     </tr>
                     <tr>
                         <td>Rilis Tahun</td>
                         <td>:</td>
                         <td>{{$skripsi->rilis}}</td>
-                    </tr>
-                    <tr>
-                        <td>Volume</td>
-                        <td>:</td>
-                        <td>{{$skripsi->volume}}</td>
                     </tr>
                     <tr>
                         <td>Halaman</td>

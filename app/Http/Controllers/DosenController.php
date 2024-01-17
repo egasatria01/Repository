@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dosen;
+use App\Imports\DosenImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DosenController extends Controller
 {
@@ -23,11 +25,6 @@ class DosenController extends Controller
         $dosen->kontak = $req->get('kontak');
         $dosen->alamat = $req->get('alamat');
         $dosen->tanggalLahir = $req->get('tanggalLahir');
-        if ($req->gelarAkademik == null){
-            $dosen->gelarAkademik = '-';
-        } else {
-            $dosen->gelarAkademik = $req->get('gelarAkademik');
-        }
         $dosen->programStudi = $req->get('programStudi');
 
         $dosen->save();
@@ -55,7 +52,6 @@ class DosenController extends Controller
         $dosen->kontak = $req->get('kontak');
         $dosen->alamat = $req->get('alamat');
         $dosen->tanggalLahir = $req->get('tanggalLahir');
-        $dosen->gelarAkademik = $req->get('gelarAkademik');
         $dosen->programStudi = $req->get('programStudi');
 
         $dosen->save();
@@ -80,5 +76,17 @@ class DosenController extends Controller
             'success' => $success,
             'message' => $message,
         ]);
+    }
+
+    // Import Dosen --------------------------------------------------------------------------------------------------
+    public function import(Request $req){
+        Excel::import(new DosenImport, $req->file('file'));
+
+        $notification = array (
+            'message' => 'Import data berhasil dilakukan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('dosen')->with($notification);
     }
 }

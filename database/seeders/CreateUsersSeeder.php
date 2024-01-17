@@ -22,7 +22,7 @@ class CreateUsersSeeder extends Seeder
                 'alamat'    => 'isMahasiswa',
                 'angkatan'  => 'isMahasiswa',
                 'prodi'     => 'isMahasiswa',
-                'jurusan'   => 'isMahasiswa',
+                'fakultas'   => 'isMahasiswa',
                 'email'     => 'mahasiswa@mail.com',
                 'password'  => bcrypt('12345'),
                 'roles_id'  => 2
@@ -34,7 +34,7 @@ class CreateUsersSeeder extends Seeder
                 'alamat'    => 'isAdmin',
                 'angkatan'  => 'isAdmin',
                 'prodi'     => 'isAdmin',
-                'jurusan'   => 'isAdmin',
+                'fakultas'   => 'isAdmin',
                 'email'     => 'admin@mail.com',
                 'password'  => bcrypt('12345'),
                 'roles_id'  => 1

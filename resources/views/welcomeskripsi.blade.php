@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Faster</a>
+                <a class="navbar-brand" href="/welcome">Faster</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -29,8 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/welcome">Skripsi</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/welcome">About</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/welcome">Contact</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/welcome#about">About</a></li>
                         @if (Route::has('login'))
                             @auth
                                 <li class="nav-item mx-0 mx-lg-1">
@@ -71,7 +70,7 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Cari Skripsi</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">ABSTRAK</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -99,19 +98,14 @@
                                     <td>{{$skripsi->abstrak}}</td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 200px;">Keterangan</td>
+                                    <td style="width: 200px;">Dosen Pembimbing</td>
                                     <td>:</td>
-                                    <td>{{$skripsi->keterangan}}</td>
+                                    <td>{{$skripsi->dospem}}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 200px;">Rilis Tahun</td>
                                     <td>:</td>
                                     <td>{{$skripsi->rilis}}</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 200px;">Volume</td>
-                                    <td>:</td>
-                                    <td>{{$skripsi->volume}}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 200px;">Halaman</td>
@@ -124,6 +118,7 @@
                                     <td>{{$skripsi->file}}</td>
                                 </tr>
                             </table>
+                            
                             @if(auth()->check())
                                 <a href="{{ route('pdf.show', ['id' => $skripsi->id]) }}"  target="_blank">
                                     <button class="btn btn-info m-3">
@@ -131,10 +126,11 @@
                                     </button>
                                 </a>
                             @else
-                                {{-- Pengguna belum login, tampilkan pesan --}}
-                                <button class="btn btn-info m-3">
+                                <a a href="{{-- Pengguna belum login, tampilkan pesan --}}">
+                                    <button class="btn btn-info m-3">
                                     Silahkan Login Untuk Melihat
-                                </button>
+                                    </button>
+                                </a>
                             @endif
                         </div>
                     </div>
@@ -145,7 +141,7 @@
             <div class="container">
                 <div class="row">
                     <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-6 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Location</h4>
                         <p class="lead mb-0">
                             Jl. Pasirgede Raya, Muka
@@ -153,21 +149,11 @@
                             Kec, Cianjur, Kabupaten Cianjur
                         </p>
                     </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Around the Web</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
-                    </div>
                     <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                    <div class="col-lg-6">
+                        <h4 class="text-uppercase mb-4">About Faster</h4>
                         <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
+                            Universitas Suryakancana - Fakultas - Sains Terapan
                         </p>
                     </div>
                 </div>

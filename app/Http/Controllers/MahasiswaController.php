@@ -25,7 +25,7 @@ class MahasiswaController extends Controller
         $mahasiswa->email = $req->get('email');
         $mahasiswa->tgl_lahir = $req->get('tgl_lahir');
         $mahasiswa->alamat = $req->get('alamat');
-        $mahasiswa->jurusan = $req->get('jurusan');
+        $mahasiswa->fakultas = $req->get('fakultas');
         $mahasiswa->angkatan = $req->get('angkatan');
         $mahasiswa->password = Hash::make($req->get('password'));
         $mahasiswa->prodi = $req->get('prodi');
@@ -54,7 +54,7 @@ class MahasiswaController extends Controller
         $mahasiswa->email = $req->get('email');
         $mahasiswa->tgl_lahir = $req->get('tgl_lahir');
         $mahasiswa->alamat = $req->get('alamat');
-        $mahasiswa->jurusan = $req->get('jurusan');
+        $mahasiswa->fakultas = $req->get('fakultas');
         $mahasiswa->angkatan = $req->get('angkatan');
         $mahasiswa->prodi = $req->get('prodi');
 
